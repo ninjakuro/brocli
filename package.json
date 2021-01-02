@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "name": "brocli",
+  "description": "Command-line Brotli compressor without dependencies",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node test/compress.js"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "keywords": [
+    "brotli",
+    "cli",
+    "compress"
+  ],
+  "author": "Viktor Astakhov <ninja@animelayer.ru> (https://animelayer.ru)",
+  "license": "MIT"
+}
