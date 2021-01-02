@@ -1,5 +1,5 @@
 import { existsSync, unlinkSync } from 'fs';
-import { getFilesFromPaths, compressFile } from './utils.js'
+import { getFilesFromPaths, compressFile } from '../src/utils.js'
 
 (async () => {
 	const files = getFilesFromPaths(['.']);

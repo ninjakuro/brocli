@@ -6,7 +6,11 @@ const ext = '.br';
 export const getFilesFromPaths = paths => {
 	return paths.reduce((acc, path) => {
 		if (statSync(path).isDirectory()) {
-			return [...acc, ...readdirSync(path).map(filename => `${path}/${filename}`)];
+			const files = readdirSync(path)
+				.filter(filename => !statSync(`${path}/${filename}`).isDirectory())
+				.map(filename => `${path}/${filename}`)
+			;
+			return [...acc, ...files];
 		}
 		return [...acc, path];
 	}, []).filter(file => !file.endsWith(ext));
@@ -27,9 +31,9 @@ export const compressFile = file => new Promise((resolve, reject) => {
 });
 
 export const sizeOf = file => {
-	const b = statSync(file).size;
+	const b = statSync(file).size || 0;
 	const e = Math.floor(Math.log(b) / Math.log(1024));
-	return `${(b / Math.pow(1024, e)).toFixed(2)} ${'KMGTP'.charAt(e)}B`;
+	return `${(b / Math.pow(1024, e)).toFixed(2)} ${' KMGTP'.charAt(e)}B`;
 }
 
 export default { getFilesFromPaths, compressFile };
