@@ -2,7 +2,7 @@
   "type": "module",
   "name": "brotli-cli-compressor",
   "description": "Command-line Brotli compressor without node_modules",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",

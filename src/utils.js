@@ -6,14 +6,11 @@ const ext = '.br';
 export const getFilesFromPaths = paths => {
 	return paths.reduce((acc, path) => {
 		if (statSync(path).isDirectory()) {
-			const files = readdirSync(path)
-				.filter(filename => !statSync(`${path}/${filename}`).isDirectory())
-				.map(filename => `${path}/${filename}`)
-			;
+			const files = readdirSync(path).map(filename => `${path}/${filename}`);
 			return [...acc, ...files];
 		}
 		return [...acc, path];
-	}, []).filter(file => !file.endsWith(ext));
+	}, []).filter(file => !file.endsWith(ext) && !statSync(file).isDirectory());
 }
 
 export const compressFile = file => new Promise((resolve, reject) => {
