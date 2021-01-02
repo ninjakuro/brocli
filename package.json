@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "name": "brotli-cli-compressor",
+  "description": "Command-line Brotli compressor without node_modules",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stakhov/brotli-cli-compressor.git"
+  },
+  "keywords": ["brotli", "cli", "compress"],
+  "author": "Viktor Astakhov <ninja@animelayer.ru> (https://animelayer.ru)",
+  "license": "MIT",
+  "homepage": "https://github.com/stakhov/brotli-cli-compressor"
+}
