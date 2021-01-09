@@ -8,6 +8,8 @@ if (process.argv.length <= 2) {
 const files = getFilesFromPaths(process.argv.splice(2));
 
 Promise.all(files.map(compressFile)).then(compressedFiles => {
-	const logs = files.map((file, i) => `${file} (${sizeOf(file)}) => ${compressedFiles[i]} (${sizeOf(compressedFiles[i])})`);
+	const logs = files.map((file, i) => {
+		return `${file} (${sizeOf(file)}) => ${compressedFiles[i]} (${sizeOf(compressedFiles[i])})`
+	});
 	console.log(logs);
 }).catch(console.warn);

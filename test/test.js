@@ -1,10 +1,9 @@
 import { existsSync, unlinkSync } from 'fs';
 import { getFilesFromPaths, compressFile } from '../src/utils.js'
 
-(async () => {
-	const files = getFilesFromPaths(['.']);
-	const compressedFiles = await Promise.all(files.map(compressFile));
+const files = getFilesFromPaths(['.']);
 
+Promise.all(files.map(compressFile)).then(compressedFiles => {
 	if (files.length === compressedFiles.filter(existsSync).length) {
 		console.info('[+] Test success');
 	} else {
@@ -14,6 +13,6 @@ import { getFilesFromPaths, compressFile } from '../src/utils.js'
 	try {
 		compressedFiles.forEach(unlinkSync);
 	} catch {
-		console.warn('[!] Something went wrong');
+		console.warn('[!] cannot delete compressed files');
 	}
-})();
+}).catch(console.warn)
